@@ -30,6 +30,11 @@ export const BookingForm: React.FC<BookingFormProps> = ({ onSuccess }) => {
         },
       });
 
+      console.log("Response status:", response.status);
+      console.log("Response ok:", response.ok);
+      const responseData = await response.json();
+      console.log("Response data:", responseData);
+
       if (response.ok) {
         setIsSubmitted(true);
         e.currentTarget.reset();
@@ -37,9 +42,10 @@ export const BookingForm: React.FC<BookingFormProps> = ({ onSuccess }) => {
         
         setTimeout(() => setIsSubmitted(false), 5000);
       } else {
-        throw new Error("Failed to send message");
+        throw new Error(responseData.error || "Failed to send message");
       }
     } catch (error) {
+      console.error("Error:", error);
       setSubmitError(
         error instanceof Error ? error.message : "An error occurred"
       );
