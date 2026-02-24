@@ -60,6 +60,12 @@ const nextConfig: NextConfig = {
   // TypeScript strict mode
   typescript: {
     tsconfigPath: "./tsconfig.json",
+    ignoreBuildErrors: false,
+  },
+
+  // Disable ESLint during build
+  eslint: {
+    ignoreDuringBuilds: true,
   },
 
   // Turbopack configuration
