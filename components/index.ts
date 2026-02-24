@@ -1,5 +1,5 @@
 // Hero Components
-export { Hero, VideoBackground } from "./Hero/Hero";
+export { Hero } from "./Hero/Hero";
 
 // Services Components
 export { ServiceCard, ServicesGrid } from "./Services/ServicesGrid";
@@ -10,7 +10,7 @@ export { Footer, ContactInfo } from "./Services/Footer";
 export { About } from "./About/About";
 
 // Gallery Components
-export { BeforeAfter, ImageGallery } from "./Gallery/ImageGallery";
+export { ImageGallery } from "./Gallery/ImageGallery";
 
 // Contact Form Components
 export { BookingForm } from "./ContactForm/BookingForm";
@@ -21,4 +21,4 @@ export { WhatsAppButton } from "./WhatsAppButton/FloatingButton";
 // UI Components
 export { Button } from "./UI/Button";
 export { Card } from "./UI/Card";
-export { LoadingSpinner, Skeleton } from "./UI/LoadingSpinner";
+export { LoadingSpinner } from "./UI/LoadingSpinner";
