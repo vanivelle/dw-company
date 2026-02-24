@@ -53,7 +53,7 @@ export default function Home() {
       <About />
 
       {/* Gallery Section */}
-      <ImageGallery onImageClick={(idx) => console.log("Image clicked:", idx)} />
+      <ImageGallery />
 
       {/* Testimonials Section */}
       <Testimonials autoPlay={true} autoPlayInterval={5000} />
