@@ -1,10 +1,79 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 
 export const BookingForm: React.FC = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    service: "",
+    address: "",
+    message: "",
+  });
+
+  const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setLoading(true);
+    setStatus("idle");
+    setErrorMessage("");
+
+    try {
+      const response = await fetch("/api/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Erro ao enviar email");
+      }
+
+      setStatus("success");
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        service: "",
+        address: "",
+        message: "",
+      });
+
+      console.log("Form submitted successfully:", data);
+
+      // Reset status after 5 seconds
+      setTimeout(() => setStatus("idle"), 5000);
+    } catch (error) {
+      setStatus("error");
+      setErrorMessage(
+        error instanceof Error ? error.message : "Erro desconhecido"
+      );
+      console.error("Form submission error:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <section id="contact" className="section-padding bg-gradient-to-b from-white to-gray-50">
       <div className="container-custom max-w-2xl">
@@ -24,10 +93,9 @@ export const BookingForm: React.FC = () => {
           </p>
         </motion.div>
 
-        {/* Form - Using Formspree native HTML form submission */}
+        {/* Form - Using custom API endpoint */}
         <motion.form
-          action="https://formspree.io/f/xreaovzp"
-          method="POST"
+          onSubmit={handleSubmit}
           className="bg-white border-2 border-gray-200 rounded-2xl p-8 shadow-lg space-y-6"
           variants={staggerContainer}
           initial="hidden"
@@ -42,6 +110,8 @@ export const BookingForm: React.FC = () => {
             <input
               type="text"
               name="name"
+              value={formData.name}
+              onChange={handleChange}
               required
               placeholder="Your full name"
               className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-green-600 focus:ring-2 focus:ring-green-100 transition-all"
@@ -56,6 +126,8 @@ export const BookingForm: React.FC = () => {
             <input
               type="email"
               name="email"
+              value={formData.email}
+              onChange={handleChange}
               required
               placeholder="your@email.com"
               className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-green-600 focus:ring-2 focus:ring-green-100 transition-all"
@@ -70,6 +142,8 @@ export const BookingForm: React.FC = () => {
             <input
               type="tel"
               name="phone"
+              value={formData.phone}
+              onChange={handleChange}
               required
               placeholder="+1 (860) 123-4567"
               className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-green-600 focus:ring-2 focus:ring-green-100 transition-all"
@@ -83,6 +157,8 @@ export const BookingForm: React.FC = () => {
             </label>
             <select
               name="service"
+              value={formData.service}
+              onChange={handleChange}
               className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-green-600 focus:ring-2 focus:ring-green-100 transition-all"
             >
               <option value="">Select a service...</option>
@@ -107,6 +183,8 @@ export const BookingForm: React.FC = () => {
             <input
               type="text"
               name="address"
+              value={formData.address}
+              onChange={handleChange}
               required
               placeholder="123 Main St, West Hartford, CT 06110"
               className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-green-600 focus:ring-2 focus:ring-green-100 transition-all"
@@ -120,6 +198,8 @@ export const BookingForm: React.FC = () => {
             </label>
             <textarea
               name="message"
+              value={formData.message}
+              onChange={handleChange}
               required
               placeholder="Tell us about your project..."
               className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-green-600 focus:ring-2 focus:ring-green-100 transition-all resize-none"
@@ -127,17 +207,39 @@ export const BookingForm: React.FC = () => {
             />
           </motion.div>
 
-          {/* Hidden Fields for Formspree */}
-          <input type="hidden" name="_subject" value="New Inquiry from DW Company Website" />
-          <input type="hidden" name="_captcha" value="false" />
+          {/* Status Messages */}
+          {status === "success" && (
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="p-4 rounded-lg bg-green-50 border-2 border-green-200"
+            >
+              <p className="text-green-700 font-semibold">
+                ✓ Email enviado com sucesso! Em breve entraremos em contato.
+              </p>
+            </motion.div>
+          )}
+
+          {status === "error" && (
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="p-4 rounded-lg bg-red-50 border-2 border-red-200"
+            >
+              <p className="text-red-700 font-semibold">
+                ✗ Erro ao enviar: {errorMessage}
+              </p>
+            </motion.div>
+          )}
 
           {/* Submit Button */}
           <motion.div variants={fadeInUp}>
             <button
               type="submit"
-              className="w-full bg-green-600 text-white py-4 rounded-lg font-bold text-lg hover:bg-green-700 transition-colors shadow-lg hover:shadow-xl"
+              disabled={loading}
+              className="w-full bg-green-600 text-white py-4 rounded-lg font-bold text-lg hover:bg-green-700 transition-colors shadow-lg hover:shadow-xl disabled:bg-gray-400 disabled:cursor-not-allowed"
             >
-              Send Message
+              {loading ? "Enviando..." : "Send Message"}
             </button>
           </motion.div>
 
