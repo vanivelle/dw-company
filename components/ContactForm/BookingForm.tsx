@@ -4,7 +4,11 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 
-export const BookingForm: React.FC = () => {
+interface BookingFormProps {
+  onSuccess?: (data: unknown) => void;
+}
+
+export const BookingForm: React.FC<BookingFormProps> = ({ onSuccess }) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -60,6 +64,11 @@ export const BookingForm: React.FC = () => {
       });
 
       console.log("Form submitted successfully:", data);
+
+      // Call onSuccess callback if provided
+      if (onSuccess) {
+        onSuccess(data);
+      }
 
       // Reset status after 5 seconds
       setTimeout(() => setStatus("idle"), 5000);
