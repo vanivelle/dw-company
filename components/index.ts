@@ -15,8 +15,8 @@ export { ImageGallery } from "./Gallery/ImageGallery";
 // Contact Form Components
 export { BookingForm } from "./ContactForm/BookingForm";
 
-// WhatsApp Components
-export { WhatsAppButton } from "./WhatsAppButton/FloatingButton";
+// Maps Components
+export { GoogleMapSection } from "./Maps/GoogleMapSection";
 
 // UI Components
 export { Button } from "./UI/Button";

@@ -2,6 +2,27 @@
 import twilio from "twilio";
 import { NextRequest, NextResponse } from "next/server";
 
+/**
+ * SMS NOTIFICATION ROUTE
+ * 
+ * Status: ⏳ READY BUT AWAITING TWILIO APPROVAL
+ * 
+ * This route sends SMS notifications when a contact form is submitted.
+ * Currently, it's configured and ready, but will only work once Twilio
+ * approves the account (5-7 business days from creation).
+ * 
+ * What happens:
+ * 1. User submits contact form
+ * 2. Email is sent immediately (via send-email route)
+ * 3. SMS notification is sent in parallel to +1 (860) 709-7832
+ * 4. If SMS fails (account not approved yet), email still works
+ * 
+ * Expected timeline:
+ * - Account created: March 14, 2026
+ * - Expected approval: March 21-28, 2026
+ * - SMS notifications will auto-start after approval (no code changes needed)
+ */
+
 const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
 const twilioPhone = process.env.TWILIO_PHONE_NUMBER;

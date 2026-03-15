@@ -7,6 +7,7 @@ import { About } from "@/components/About/About";
 import { ImageGallery } from "@/components/Gallery/ImageGallery";
 import { Testimonials } from "@/components/Services/Testimonials";
 import { BookingForm } from "@/components/ContactForm/BookingForm";
+import { GoogleMapSection } from "@/components/Maps/GoogleMapSection";
 import { Footer } from "@/components/Services/Footer";
 import { smoothScrollTo } from "@/lib/utils";
 
@@ -59,6 +60,9 @@ export default function Home() {
 
       {/* Booking Form Section */}
       <BookingForm onSuccess={handleFormSuccess} />
+
+      {/* Google Maps Section */}
+      <GoogleMapSection />
 
       {/* Footer */}
       <Footer />

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 
@@ -9,6 +10,7 @@ interface BookingFormProps {
 }
 
 export const BookingForm: React.FC<BookingFormProps> = ({ onSuccess }) => {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -82,8 +84,10 @@ export const BookingForm: React.FC<BookingFormProps> = ({ onSuccess }) => {
         onSuccess(data);
       }
 
-      // Reset status after 5 seconds
-      setTimeout(() => setStatus("idle"), 5000);
+      // Redirect to thank you page after 2 seconds
+      setTimeout(() => {
+        router.push("/thank-you");
+      }, 2000);
     } catch (error) {
       setStatus("error");
       setErrorMessage(
