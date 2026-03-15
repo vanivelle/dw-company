@@ -53,6 +53,18 @@ export const BookingForm: React.FC<BookingFormProps> = ({ onSuccess }) => {
         throw new Error(data.error || "Erro ao enviar email");
       }
 
+      // Send SMS notification in parallel (non-blocking)
+      fetch("/api/send-sms", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      }).catch((err) => {
+        // SMS failure doesn't affect the form submission
+        console.error("SMS notification failed:", err);
+      });
+
       setStatus("success");
       setFormData({
         name: "",

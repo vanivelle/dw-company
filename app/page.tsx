@@ -8,7 +8,6 @@ import { ImageGallery } from "@/components/Gallery/ImageGallery";
 import { Testimonials } from "@/components/Services/Testimonials";
 import { BookingForm } from "@/components/ContactForm/BookingForm";
 import { Footer } from "@/components/Services/Footer";
-import { WhatsAppButton } from "@/components/WhatsAppButton/FloatingButton";
 import { smoothScrollTo } from "@/lib/utils";
 
 export default function Home() {
@@ -63,12 +62,6 @@ export default function Home() {
 
       {/* Footer */}
       <Footer />
-
-      {/* WhatsApp Floating Button */}
-      <WhatsAppButton
-        message="Hi! I'm interested in getting a free estimate for painting or carpentry services."
-        position="bottom-right"
-      />
     </main>
   );
 }

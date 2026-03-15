@@ -131,7 +131,7 @@ export const Footer: React.FC<FooterProps> = ({
       <div className="py-8 border-t border-gray-800">
         <div className="container-custom">
           <motion.div
-            className="grid md:grid-cols-3 gap-8 items-center"
+            className="grid md:grid-cols-4 gap-8 items-center"
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
@@ -145,8 +145,28 @@ export const Footer: React.FC<FooterProps> = ({
               </p>
             </motion.div>
 
+            {/* Our Team - Owner Names */}
+            <motion.div variants={staggerItem}>
+              <h4 className="font-semibold text-white mb-3">Our Team</h4>
+              <div className="space-y-2">
+                <div>
+                  <p className="text-gray-400">
+                    <span className="text-white font-medium">Wellington Freitas</span>
+                  </p>
+                  <p className="text-sm text-gray-500">Owner</p>
+                </div>
+                <div>
+                  <p className="text-gray-400">
+                    <span className="text-white font-medium">Derveli Freitas</span>
+                  </p>
+                  <p className="text-sm text-gray-500">Owner</p>
+                </div>
+              </div>
+            </motion.div>
+
             {/* Quick Links */}
             <motion.div variants={staggerItem} className="text-center">
+              <h4 className="font-semibold text-white mb-3">Links</h4>
               <div className="space-y-2">
                 <a
                   href="#services"
