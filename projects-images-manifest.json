@@ -1,0 +1,93 @@
+{
+  "projects": [
+    {
+      "id": "floor-1",
+      "title": "Basement Floor Installation",
+      "description": "Beautiful light oak hardwood flooring in basement with marble accents",
+      "service": "floor-installation",
+      "folder": "floor-installation",
+      "images": [
+        "floor-installation-basement-1.jpg",
+        "floor-installation-basement-2.jpg"
+      ],
+      "tags": ["flooring", "hardwood", "basement"]
+    },
+    {
+      "id": "stairs-1",
+      "title": "Custom Wooden Stairs with Railings",
+      "description": "Interior staircase with custom wooden steps and professional railings",
+      "service": "carpentry",
+      "folder": "carpentry",
+      "images": [
+        "wooden-stairs-with-railings-1.jpg"
+      ],
+      "tags": ["stairs", "carpentry", "railings"]
+    },
+    {
+      "id": "door-1",
+      "title": "Custom Wooden Door Installation",
+      "description": "Natural wood closet door with hardware installation",
+      "service": "carpentry",
+      "folder": "carpentry",
+      "images": [
+        "wooden-door-closet-1.jpg"
+      ],
+      "tags": ["doors", "carpentry", "wood"]
+    },
+    {
+      "id": "painting-1",
+      "title": "Interior Wall Painting",
+      "description": "Clean, professional interior painting with smooth white finishes",
+      "service": "painting",
+      "folder": "painting",
+      "images": [
+        "interior-painting-white-walls-1.jpg"
+      ],
+      "tags": ["painting", "interior", "white"]
+    },
+    {
+      "id": "bathroom-1",
+      "title": "Modern Bathroom Remodel",
+      "description": "Complete bathroom renovation with marble tile flooring and modern fixtures",
+      "service": "bathroom-remodeling",
+      "folder": "bathroom-remodel",
+      "images": [
+        "bathroom-remodel-marble-modern-1.jpg"
+      ],
+      "tags": ["bathroom", "remodeling", "modern", "marble"]
+    },
+    {
+      "id": "basement-1",
+      "title": "Basement Laundry Room",
+      "description": "Finished basement with light flooring and laundry area",
+      "service": "floor-installation",
+      "folder": "basements",
+      "images": [
+        "basement-laundry-finished-1.jpg"
+      ],
+      "tags": ["basement", "laundry", "flooring"]
+    },
+    {
+      "id": "basement-2",
+      "title": "Basement Storage Closet",
+      "description": "Custom storage closet with shelving and marble tile flooring",
+      "service": "carpentry",
+      "folder": "basements",
+      "images": [
+        "basement-storage-closet-1.jpg"
+      ],
+      "tags": ["basement", "storage", "closet", "shelving"]
+    },
+    {
+      "id": "basement-3",
+      "title": "Finished Basement Room",
+      "description": "Clean finished basement with LED lighting and hardwood flooring",
+      "service": "floor-installation",
+      "folder": "basements",
+      "images": [
+        "basement-finished-room-1.jpg"
+      ],
+      "tags": ["basement", "finished", "flooring", "lighting"]
+    }
+  ]
+}
