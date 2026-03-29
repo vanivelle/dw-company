@@ -21,7 +21,7 @@ const images: GalleryImage[] = [
   { id: 4, category: 'stairs', image: '/images/projects/carpentry/wooden-door-closet-1.jpg', title: 'Custom Carpentry' },
   { id: 5, category: 'floors', image: '/images/projects/basements/basement-finished-room-1.jpg', title: 'Finished Basement' },
   { id: 6, category: 'floors', image: '/images/projects/basements/basement-laundry-finished-1.jpg', title: 'Laundry Room' },
-  { id: 7, category: 'all', image: '/images/projects/bathroom-remodel/bathroom-remodel-marble-modern-1.jpg', title: 'Bathroom Remodel' },
+  { id: 7, category: 'bathroom', image: '/images/projects/bathroom-remodel/bathroom-remodel-marble-modern-1.jpg', title: 'Bathroom Remodel' },
   { id: 8, category: 'floors', image: '/images/projects/basements/basement-storage-closet-1.jpg', title: 'Storage Closet' },
 ]
 
