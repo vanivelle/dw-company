@@ -10,26 +10,24 @@ type Category = 'all' | 'painting' | 'floors' | 'stairs' | 'bathroom'
 interface GalleryImage {
   id: number
   category: Category
-  before: string
-  after: string
+  image: string
   title: string
 }
 
 const images: GalleryImage[] = [
-  { id: 1, category: 'painting', before: '/images/projects/painting/interior-painting-white-walls-1.jpg', after: '/images/projects/painting/interior-painting-white-walls-1.jpg', title: 'Interior Painting' },
-  { id: 2, category: 'floors', before: '/images/projects/floor-installation/floor-installation-basement-1.jpg', after: '/images/projects/floor-installation/floor-installation-basement-1.jpg', title: 'Floor Refinishing' },
-  { id: 3, category: 'stairs', before: '/images/projects/carpentry/wooden-stairs-with-railings-1.jpg', after: '/images/projects/carpentry/wooden-stairs-with-railings-1.jpg', title: 'Staircase Renovation' },
-  { id: 4, category: 'stairs', before: '/images/projects/carpentry/wooden-door-closet-1.jpg', after: '/images/projects/carpentry/wooden-door-closet-1.jpg', title: 'Custom Carpentry' },
-  { id: 5, category: 'floors', before: '/images/projects/basements/basement-finished-room-1.jpg', after: '/images/projects/basements/basement-finished-room-1.jpg', title: 'Finished Basement' },
-  { id: 6, category: 'floors', before: '/images/projects/basements/basement-laundry-finished-1.jpg', after: '/images/projects/basements/basement-laundry-finished-1.jpg', title: 'Laundry Room' },
-  { id: 7, category: 'all', before: '/images/projects/bathroom-remodel/bathroom-remodel-marble-modern-1.jpg', after: '/images/projects/bathroom-remodel/bathroom-remodel-marble-modern-1.jpg', title: 'Bathroom Remodel' },
-  { id: 8, category: 'floors', before: '/images/projects/basements/basement-storage-closet-1.jpg', after: '/images/projects/basements/basement-storage-closet-1.jpg', title: 'Storage Closet' },
+  { id: 1, category: 'painting', image: '/images/projects/painting/interior-painting-white-walls-1.jpg', title: 'Interior Painting' },
+  { id: 2, category: 'floors', image: '/images/projects/floor-installation/floor-installation-basement-1.jpg', title: 'Floor Refinishing' },
+  { id: 3, category: 'stairs', image: '/images/projects/carpentry/wooden-stairs-with-railings-1.jpg', title: 'Staircase Renovation' },
+  { id: 4, category: 'stairs', image: '/images/projects/carpentry/wooden-door-closet-1.jpg', title: 'Custom Carpentry' },
+  { id: 5, category: 'floors', image: '/images/projects/basements/basement-finished-room-1.jpg', title: 'Finished Basement' },
+  { id: 6, category: 'floors', image: '/images/projects/basements/basement-laundry-finished-1.jpg', title: 'Laundry Room' },
+  { id: 7, category: 'all', image: '/images/projects/bathroom-remodel/bathroom-remodel-marble-modern-1.jpg', title: 'Bathroom Remodel' },
+  { id: 8, category: 'floors', image: '/images/projects/basements/basement-storage-closet-1.jpg', title: 'Storage Closet' },
 ]
 
 export function ImageGallery() {
   const [selectedCategory, setSelectedCategory] = useState<Category>('all')
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null)
-  const [sliderPosition, setSliderPosition] = useState(50)
 
   // FILTRAR IMAGENS - SEMPRE RETORNA ARRAY (NUNCA VAZIO)
   const filteredImages = selectedCategory === 'all' 
@@ -99,7 +97,7 @@ export function ImageGallery() {
               >
                 {/* HOVER SUAVE - SEM ZOOM EXCESSIVO */}
                 <Image
-                  src={img.after}
+                  src={img.image}
                   alt={img.title}
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -120,7 +118,7 @@ export function ImageGallery() {
           </motion.div>
         </AnimatePresence>
 
-        {/* MODAL - BEFORE/AFTER SLIDER */}
+        {/* MODAL - IMAGEM SIMPLES */}
         <AnimatePresence>
           {selectedImage && (
             <motion.div
@@ -134,77 +132,31 @@ export function ImageGallery() {
                 initial={{ scale: 0.9, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.9, opacity: 0 }}
-                className="relative w-full max-w-4xl"
+                className="relative w-full max-w-3xl"
                 onClick={(e) => e.stopPropagation()}
               >
                 {/* BOTÃO FECHAR */}
                 <button
                   onClick={() => setSelectedImage(null)}
-                  className="absolute -top-12 right-0 text-white hover:text-gray-300 transition-colors"
+                  className="absolute -top-12 right-0 text-white hover:text-gray-300 transition-colors z-10"
                 >
                   <X className="w-8 h-8" />
                 </button>
 
-                {/* BEFORE/AFTER COMPARISON */}
+                {/* IMAGEM */}
                 <div className="relative aspect-[4/3] overflow-hidden rounded-lg">
-                  {/* BEFORE IMAGE */}
                   <Image
-                    src={selectedImage.before}
-                    alt="Before"
+                    src={selectedImage.image}
+                    alt={selectedImage.title}
                     fill
                     className="object-cover"
                     priority
                   />
-                  
-                  {/* AFTER IMAGE - COM CLIP PATH */}
-                  <div
-                    className="absolute inset-0"
-                    style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
-                  >
-                    <Image
-                      src={selectedImage.after}
-                      alt="After"
-                      fill
-                      className="object-cover"
-                      priority
-                    />
-                  </div>
-
-                  {/* SLIDER */}
-                  <div
-                    className="absolute top-0 bottom-0 w-1 bg-white cursor-ew-resize"
-                    style={{ left: `${sliderPosition}%` }}
-                  >
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white rounded-full shadow-xl flex items-center justify-center">
-                      <div className="flex gap-1">
-                        <div className="w-1 h-4 bg-gray-400 rounded"></div>
-                        <div className="w-1 h-4 bg-gray-400 rounded"></div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* INPUT RANGE */}
-                  <input
-                    type="range"
-                    min="0"
-                    max="100"
-                    value={sliderPosition}
-                    onChange={(e) => setSliderPosition(Number(e.target.value))}
-                    className="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize"
-                  />
-
-                  {/* LABELS */}
-                  <div className="absolute bottom-4 left-4 bg-black/70 text-white px-4 py-2 rounded-lg backdrop-blur-sm">
-                    <p className="text-sm font-semibold">BEFORE</p>
-                  </div>
-                  <div className="absolute bottom-4 right-4 bg-black/70 text-white px-4 py-2 rounded-lg backdrop-blur-sm">
-                    <p className="text-sm font-semibold">AFTER</p>
-                  </div>
                 </div>
 
-                {/* TÍTULO DO PROJETO */}
-                <div className="mt-6 text-center">
-                  <h3 className="text-white text-2xl font-bold">{selectedImage.title}</h3>
+                {/* TÍTULO */}
+                <div className="mt-4 text-center">
+                  <h3 className="text-white text-xl font-bold">{selectedImage.title}</h3>
                 </div>
               </motion.div>
             </motion.div>
