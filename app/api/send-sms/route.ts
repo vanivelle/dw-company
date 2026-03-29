@@ -60,8 +60,8 @@ Responda ASAP!
 
     const smsResponse = await client.messages.create({
       body: smsBody,
-      from: twilioPhone,
-      to: businessPhone,
+      from: twilioPhone as string,
+      to: businessPhone as string,
     });
 
     console.log("SMS sent successfully:", smsResponse.sid);
