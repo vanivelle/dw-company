@@ -29,7 +29,6 @@ export function ImageGallery() {
   const [selectedCategory, setSelectedCategory] = useState<Category>('all')
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null)
 
-  // FILTRAR IMAGENS - SEMPRE RETORNA ARRAY (NUNCA VAZIO)
   const filteredImages = selectedCategory === 'all' 
     ? images 
     : images.filter(img => img.category === selectedCategory)
@@ -38,7 +37,6 @@ export function ImageGallery() {
     <section className="py-20 px-4 bg-gradient-to-b from-gray-50 to-white">
       <div className="max-w-7xl mx-auto">
         
-        {/* HEADER */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -53,7 +51,6 @@ export function ImageGallery() {
           </p>
         </motion.div>
 
-        {/* FILTROS - SEM BUGS */}
         <div className="flex flex-wrap justify-center gap-4 mb-12">
           {[
             { key: 'all', label: 'All Projects' },
@@ -76,7 +73,6 @@ export function ImageGallery() {
           ))}
         </div>
 
-        {/* GRID DE IMAGENS - SEM ZOOM EXAGERADO */}
         <AnimatePresence mode="wait">
           <motion.div
             key={selectedCategory}
@@ -95,7 +91,6 @@ export function ImageGallery() {
                 onClick={() => setSelectedImage(img)}
                 className="relative aspect-[4/3] overflow-hidden rounded-xl shadow-lg cursor-pointer group"
               >
-                {/* HOVER SUAVE - SEM ZOOM EXCESSIVO */}
                 <Image
                   src={img.image}
                   alt={img.title}
@@ -104,7 +99,6 @@ export function ImageGallery() {
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
                 
-                {/* OVERLAY COM TÍTULO */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="absolute bottom-0 left-0 right-0 p-6">
                     <h3 className="text-white text-xl font-bold mb-2">
@@ -118,7 +112,6 @@ export function ImageGallery() {
           </motion.div>
         </AnimatePresence>
 
-        {/* MODAL - IMAGEM SIMPLES */}
         <AnimatePresence>
           {selectedImage && (
             <motion.div
@@ -135,7 +128,6 @@ export function ImageGallery() {
                 className="relative w-full max-w-3xl"
                 onClick={(e) => e.stopPropagation()}
               >
-                {/* BOTÃO FECHAR */}
                 <button
                   onClick={() => setSelectedImage(null)}
                   className="absolute -top-12 right-0 text-white hover:text-gray-300 transition-colors z-10"
@@ -143,7 +135,6 @@ export function ImageGallery() {
                   <X className="w-8 h-8" />
                 </button>
 
-                {/* IMAGEM */}
                 <div className="relative aspect-[4/3] overflow-hidden rounded-lg">
                   <Image
                     src={selectedImage.image}
@@ -154,7 +145,6 @@ export function ImageGallery() {
                   />
                 </div>
 
-                {/* TÍTULO */}
                 <div className="mt-4 text-center">
                   <h3 className="text-white text-xl font-bold">{selectedImage.title}</h3>
                 </div>
