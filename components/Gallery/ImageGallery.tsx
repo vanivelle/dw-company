@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X } from 'lucide-react'
 
-type Category = 'all' | 'painting' | 'floors' | 'stairs'
+type Category = 'all' | 'painting' | 'floors' | 'stairs' | 'bathroom'
 
 interface GalleryImage {
   id: number
@@ -16,11 +16,14 @@ interface GalleryImage {
 }
 
 const images: GalleryImage[] = [
-  { id: 1, category: 'painting', before: '/images/pintura/WhatsApp Image 2026-02-11 at 23.50.22.jpeg', after: '/images/pintura/WhatsApp Image 2026-02-12 at 00.00.46.jpeg', title: 'Interior Painting' },
-  { id: 2, category: 'floors', before: '/images/chao/WhatsApp Image 2026-02-12 at 00.00.54.jpeg', after: '/images/chao/WhatsApp Image 2026-02-12 at 00.00.54 (1).jpeg', title: 'Floor Refinishing' },
-  { id: 3, category: 'stairs', before: '/images/escada/WhatsApp Image 2026-02-11 at 23.59.08.jpeg', after: '/images/escada/WhatsApp Image 2026-02-11 at 23.59.20.jpeg', title: 'Staircase Renovation' },
-  { id: 4, category: 'stairs', before: '/images/escada/WhatsApp Image 2026-02-11 at 23.59.21.jpeg', after: '/images/escada/WhatsApp Image 2026-02-11 at 23.59.22.jpeg', title: 'Staircase Repair' },
-  { id: 5, category: 'stairs', before: '/images/escada/WhatsApp Image 2026-02-12 at 00.00.54 (2).jpeg', after: '/images/escada/WhatsApp Image 2026-02-11 at 23.59.08.jpeg', title: 'Custom Stairs' },
+  { id: 1, category: 'painting', before: '/images/projects/painting/interior-painting-white-walls-1.jpg', after: '/images/projects/painting/interior-painting-white-walls-1.jpg', title: 'Interior Painting' },
+  { id: 2, category: 'floors', before: '/images/projects/floor-installation/floor-installation-basement-1.jpg', after: '/images/projects/floor-installation/floor-installation-basement-1.jpg', title: 'Floor Refinishing' },
+  { id: 3, category: 'stairs', before: '/images/projects/carpentry/wooden-stairs-with-railings-1.jpg', after: '/images/projects/carpentry/wooden-stairs-with-railings-1.jpg', title: 'Staircase Renovation' },
+  { id: 4, category: 'stairs', before: '/images/projects/carpentry/wooden-door-closet-1.jpg', after: '/images/projects/carpentry/wooden-door-closet-1.jpg', title: 'Custom Carpentry' },
+  { id: 5, category: 'floors', before: '/images/projects/basements/basement-finished-room-1.jpg', after: '/images/projects/basements/basement-finished-room-1.jpg', title: 'Finished Basement' },
+  { id: 6, category: 'floors', before: '/images/projects/basements/basement-laundry-finished-1.jpg', after: '/images/projects/basements/basement-laundry-finished-1.jpg', title: 'Laundry Room' },
+  { id: 7, category: 'all', before: '/images/projects/bathroom-remodel/bathroom-remodel-marble-modern-1.jpg', after: '/images/projects/bathroom-remodel/bathroom-remodel-marble-modern-1.jpg', title: 'Bathroom Remodel' },
+  { id: 8, category: 'floors', before: '/images/projects/basements/basement-storage-closet-1.jpg', after: '/images/projects/basements/basement-storage-closet-1.jpg', title: 'Storage Closet' },
 ]
 
 export function ImageGallery() {
@@ -59,6 +62,7 @@ export function ImageGallery() {
             { key: 'painting', label: 'Painting' },
             { key: 'floors', label: 'Floors' },
             { key: 'stairs', label: 'Stairs' },
+            { key: 'bathroom', label: 'Bathroom' },
           ].map((cat) => (
             <button
               key={cat.key}
