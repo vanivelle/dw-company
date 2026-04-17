@@ -29,6 +29,15 @@ const images: GalleryImage[] = [
   { id: 12, category: 'bathroom', image: '/images/projects/bathroom-remodel/bathroom-vanity-double-sink-4.jpg', title: 'Bathroom Vanity' },
   { id: 13, category: 'bathroom', image: '/images/projects/bathroom-remodel/bathroom-vanity-double-sink-5.jpg', title: 'Bathroom Vanity' },
   { id: 14, category: 'bathroom', image: '/images/projects/bathroom-remodel/bathroom-vanity-double-sink-6.jpg', title: 'Bathroom Vanity' },
+  { id: 15, category: 'floors', image: '/images/chao/WhatsApp Image 2026-02-12 at 00.00.54 (1).jpeg', title: 'Floor Installation' },
+  { id: 16, category: 'floors', image: '/images/chao/WhatsApp Image 2026-02-12 at 00.00.54.jpeg', title: 'Floor Installation' },
+  { id: 17, category: 'stairs', image: '/images/escada/WhatsApp Image 2026-02-11 at 23.59.08.jpeg', title: 'Custom Stairs' },
+  { id: 18, category: 'stairs', image: '/images/escada/WhatsApp Image 2026-02-11 at 23.59.20.jpeg', title: 'Custom Stairs' },
+  { id: 19, category: 'stairs', image: '/images/escada/WhatsApp Image 2026-02-11 at 23.59.21.jpeg', title: 'Custom Stairs' },
+  { id: 20, category: 'stairs', image: '/images/escada/WhatsApp Image 2026-02-11 at 23.59.22.jpeg', title: 'Custom Stairs' },
+  { id: 21, category: 'stairs', image: '/images/escada/WhatsApp Image 2026-02-12 at 00.00.54 (2).jpeg', title: 'Custom Stairs' },
+  { id: 22, category: 'painting', image: '/images/pintura/WhatsApp Image 2026-02-11 at 23.50.22.jpeg', title: 'Interior Painting' },
+  { id: 23, category: 'painting', image: '/images/pintura/WhatsApp Image 2026-02-12 at 00.00.46.jpeg', title: 'Interior Painting' },
 ]
 
 export function ImageGallery() {
