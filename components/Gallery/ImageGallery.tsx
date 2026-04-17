@@ -23,6 +23,12 @@ const images: GalleryImage[] = [
   { id: 6, category: 'floors', image: '/images/projects/basements/basement-laundry-finished-1.jpg', title: 'Laundry Room' },
   { id: 7, category: 'bathroom', image: '/images/projects/bathroom-remodel/bathroom-remodel-marble-modern-1.jpg', title: 'Bathroom Remodel' },
   { id: 8, category: 'floors', image: '/images/projects/basements/basement-storage-closet-1.jpg', title: 'Storage Closet' },
+  { id: 9, category: 'bathroom', image: '/images/projects/bathroom-remodel/bathroom-vanity-double-sink-1.jpg', title: 'Bathroom Vanity' },
+  { id: 10, category: 'bathroom', image: '/images/projects/bathroom-remodel/bathroom-vanity-double-sink-2.jpg', title: 'Bathroom Vanity' },
+  { id: 11, category: 'bathroom', image: '/images/projects/bathroom-remodel/bathroom-vanity-double-sink-3.jpg', title: 'Bathroom Vanity' },
+  { id: 12, category: 'bathroom', image: '/images/projects/bathroom-remodel/bathroom-vanity-double-sink-4.jpg', title: 'Bathroom Vanity' },
+  { id: 13, category: 'bathroom', image: '/images/projects/bathroom-remodel/bathroom-vanity-double-sink-5.jpg', title: 'Bathroom Vanity' },
+  { id: 14, category: 'bathroom', image: '/images/projects/bathroom-remodel/bathroom-vanity-double-sink-6.jpg', title: 'Bathroom Vanity' },
 ]
 
 export function ImageGallery() {
