@@ -53,7 +53,9 @@ export default function Home() {
       <About />
 
       {/* Gallery Section */}
-      <ImageGallery />
+      <div id="gallery">
+        <ImageGallery />
+      </div>
 
       {/* Testimonials Section */}
       <Testimonials autoPlay={true} autoPlayInterval={5000} />
